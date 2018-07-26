@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SIGNUP</title>
+<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
+<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+<script src="jquery/jquery-3.1.1.min.js" type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		function validate(){
+			if( document.f1.account.value == "" ){
+     		alert( "欄位不可為空" );
+     		document.f1.account.focus();
+     		return false;}
+     		if( document.f1.pw.value == "" ){
+     		alert( "欄位不可為空" );
+     		document.f1.pw.focus();
+     		return false;}
+            if( document.f1.pw_con.value == "" ){
+            alert( "欄位不可為空" );
+            document.f1.pw_con.focus();
+            return false;}
+     		if( document.f1.inputname.value == "" ){
+     		alert( "欄位不可為空" );
+     		document.f1.inputname.focus();
+     		return false;}
+     		if( document.f1.phone.value == "" ){
+     		alert( "欄位不可為空" );
+     		document.f1.phone.focus();
+     		return false;}
+     		if( document.f1.email.value == "" ){
+     		alert( "欄位不可為空" );
+     		document.f1.email.focus();
+     		return false;}
+     		if( document.f1.bir.value == "" ){
+     		alert( "欄位不可為空" );
+     		document.f1.bir.focus();
+     		return false;}
+     		if( document.f1.skype.value == "" ){
+     		alert( "欄位不可為空" );
+     		document.f1.skype.focus();
+     		return false;}
+     		if( document.f1.year.value == "" ){
+     		alert( "欄位不可為空" );
+     		document.f1.year.focus();
+     		return false;}
+
+            if ((document.f1.elements[1].value)!=(document.f1.elements[2].value)){ 
+                alert("確認密碼不一致"); 
+            return false;} 
+     	return(true);}//以上判斷都沒問題統一傳送的true
+	</script>
+	<script type="text/javascript" language="javascript">
+	//判斷radio和checkbox有沒有填值
+        $(function(){
+            $("#btnSubmit").click(function(){
+                var val=$('input:radio[name="sport"]:checked').val();
+                var val2=$('input:checkbox[name="web[]"]:checked').val();
+                if(val==null||val2==null){
+                    alert("欄位不可為空");
+                return false;}  
+            });
+        });
+    </script>
+    <script>//判斷密碼顯示圖片
+        function checkmsg(){
+            
+            if( document.f1.pw.value != document.f1.pw_con.value ){
+               $('.pwmsg').fadeIn("fast").css('display','inline');
+                document.f1.pw_con.focus();
+                return false;}
+            else{
+                $('.pwmsg').hide();
+                $('.pwmsg_r').fadeIn("fast").css('display','inline');
+            }
+        }
+        
+    </script>
+    
+</head>
+<body>
+	<form id="f1" method="post" action="signup.php" name="f1" onsubmit="return(validate());">
+		帳號    : <input type="text" name="account" /><br/>
+		密碼    : <input type="password" id="pw" name="pw" /><br/>
+        確認密碼: <input type="password" id="pw_con" name="pw_con" onblur="checkmsg()"/> <div class="pwmsg" id="pwmsg" style="display:none" style= "display:inline"><img src=".\wrong.jpg" height="14px" width="14px"></div><div class="pwmsg_r" id="pwmsg_r" style="display:none" style= "display:inline"><img src=".\right.png" height="14px" width="14px"></div><br/>
+		姓名    : <input type="text" name="inputname" /><br/>
+		電話    : <input type="text" name="phone" /><br/>
+		E-mail  : <input type="text" name="email" /><br/>
+		生日    : <input type="text" name="bir" /><br/>
+		Skype   : <input type="text" name="skype" /><br/>
+		畢業年度: <input type="text" name="year" /><br/>
+		喜愛運動: <input type="radio" name="sport" value="basketball">Basketball <input type="radio" name="sport" value="baseball">Baseball<input type="radio" name="sport" value="Badminton">Badminton<br/>
+		常用社群:<input type="checkbox" name="web[]" value="fb">FB <input type="checkbox" name="web[]" value="ig">IG<br/>
+		<input type="submit" id="btnSubmit"/> <input type="reset" />
+	</form>	
+</body>
+</html>
